@@ -1,0 +1,23 @@
+# Node dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables / secrets
+.env
+
+# Python virtual env
+.venv/
+__pycache__/
+
+# VS Code editor config
+.vscode/
+
+# Dev container runtime data / Docker volumes
+db-data/
+code/
+
+# Logs
+*.log
