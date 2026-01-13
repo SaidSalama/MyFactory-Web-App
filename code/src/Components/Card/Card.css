@@ -1,0 +1,37 @@
+/* src/components/Card.css */
+.card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  padding: 24px 24px 0 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.card-description {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 6px 0 0 0;
+}
+
+.card-content {
+  padding: 20px 24px 24px 24px;
+  flex: 1;
+}
+

@@ -1,0 +1,184 @@
+:root {
+	--main_color: #0a3ba5;
+	--second_color: #243455;
+}
+/* Optional: make text slightly bolder for industrial feel */
+.machine-list h3 {
+	font-weight: 700;
+	color: #1e293b;
+}
+
+/* Tasks Tab - Pure CSS */
+.task-send-button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: var(--second_color);
+	color: white;
+	padding: 10px 16px;
+	border-radius: 8px;
+	border: none;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.task-send-button:hover {
+	background: var(--main_color);
+}
+
+.task-send-icon {
+	width: 16px;
+	height: 16px;
+}
+
+.task-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.task-item {
+	padding: 20px;
+	background: var(--second_color);
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	transition: all 0.2s;
+}
+
+.task-item:hover {
+	background: var(--main_color);
+	border-color: #cbd5e1;
+}
+
+.task-title {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 0 0 6px 0;
+	color: white;
+}
+
+.task-assigned {
+	font-size: 14px;
+	color: #64748b;
+	margin: 0;
+}
+
+.task-badges {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+.task-actions {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	flex-direction: column;
+}
+
+/* Modal Form inside modal */
+.modal-title {
+	font-size: 24px;
+	font-weight: 700;
+	margin: 0 0 8px 0;
+	color: var(--second_color);
+}
+
+.modal-description {
+	color: #6b7280;
+	margin: 0 0 10px 0;
+}
+
+.modal-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.form-label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #374151;
+	margin-top: 10px;
+}
+
+.form-input {
+	padding: 12px;
+	border: 1px solid var(--second_color);
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+.form-input:focus {
+	outline: none;
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.modal-submit-button {
+	background: var(--second_color);
+	color: white;
+	padding: 14px;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	margin-top: 12px;
+}
+
+.modal-submit-button:hover {
+	background: var(--main_color);
+}
+.modal-content {
+	padding: 10px 32px 10px 32px;
+	position: relative;
+}
+
+.modal-submit-button {
+	position: relative;
+	bottom: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(90% - 64px);
+	max-width: 436px;
+	background: var(--second_color);
+	color: white;
+	padding: 16px;
+	border-radius: 12px;
+	font-weight: 600;
+	box-shadow: 0 10px 25px var(--second_color);
+}
+
+.modal-submit-button:hover {
+	background: var(--main_color);
+}
+
+/**************************************************/
+/*Responsive*/
+
+@media (max-width: 767px) {
+	.task-header-description {
+		display: none;
+	}
+	.task-send-button {
+		font-size: 11px;
+		padding: 10px;
+	}
+	.send-icon {
+		width: 10px;
+	}
+	.task-card-header {
+		flex-direction: column;
+		gap: 15px;
+	}
+}

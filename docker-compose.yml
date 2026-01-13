@@ -1,0 +1,47 @@
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - ./code/mysql:/MyFactory
+      - ./db-data:/var/lib/mysql
+    working_dir: /MyFactory
+
+  #service name
+  mongodb:
+    image: mongo:8.2
+    restart: always
+    #connexion information
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb:/MyFactory #./mongodb is in local and /mongocontainer is the file in container
+      - ./mongodb-data:/etc/mongo # ./mongodb-data is a local file to store the data base created in the container in /etc/mongo
+    
+    #the working directory is isolated for each servive
+    working_dir: /MyFactory
+    
+  node:
+    image: node:25
+    restart: always
+    #connexion information
+    ports:
+      - 3000:3000
+      - 5173:5173
+      - 5500:5500
+    volumes:
+      - ./code:/MyFactory 
+      
+    tty: true
+    #the working directory is isolated for each servive
+    working_dir: /MyFactory
+      
+
+

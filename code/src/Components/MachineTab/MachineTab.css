@@ -1,0 +1,374 @@
+/* MACHINES TAB — PURE INDUSTRIAL MASTERPIECE */
+/* MAXIMUM INDUSTRIAL — THIS IS A REAL FACTORY NOW */
+.machines-hardcore-bg {
+	min-height: 100vh;
+	background: #0d1117;
+	background-image:
+		repeating-linear-gradient(
+			0deg,
+			#161b22 0px,
+			#161b22 2px,
+			transparent 2px,
+			transparent 4px
+		),
+		url("https://images.unsplash.com/photo-1581092162380-23aa862c70f7?ixlib=rb-4.0.3&auto=format&fit=crop&q=90");
+	background-attachment: fixed;
+	padding: 20px;
+	font-family: "Courier New", monospace;
+	position: relative;
+}
+
+.machines-hardcore-bg::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background: repeating-linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(0, 255, 0, 0.03) 50%,
+		transparent 100%
+	);
+	animation: scan 8s linear infinite;
+	pointer-events: none;
+	z-index: 1;
+}
+
+@keyframes scan {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.machines-hardcore-content {
+	position: relative;
+	z-index: 2;
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
+.machines-hardcore-card {
+	background: #010409;
+	border: 2px solid #238636;
+	box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.hardcore-header {
+	background: linear-gradient(to bottom, #161b22, #0d1117);
+	border-bottom: 2px solid #238636;
+	padding: 20px 30px;
+	position: relative;
+}
+
+@media (max-width: 767px) {
+}
+
+.title-container {
+	position: relative;
+	display: inline-block;
+}
+
+.machines-hardcore-title {
+	font-size: 4rem; /*!important;*/
+	font-weight: 900; /*!important;*/
+	color: #22c55e; /*!important;*/
+	letter-spacing: 8px;
+	text-shadow: 0 0 20px #22c55e;
+	margin: 0;
+}
+
+.scanline {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: #22c55e;
+	opacity: 0.6;
+	animation: flicker 3s infinite;
+}
+
+.machines-hardcore-subtitle {
+	color: #22c55e;
+	font-size: 1rem;
+	letter-spacing: 4px;
+	margin: 8px 0 0 0;
+	opacity: 0.8;
+}
+
+@media (max-width: 767px) {
+	.machines-hardcore-subtitle {
+		display: none;
+	}
+}
+
+.machines-hardcore-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+	gap: 24px;
+	padding: 30px;
+}
+
+.machine-hardcore-panel {
+	background: #0d1117;
+	border: 2px solid #30363d;
+	padding: 20px;
+	position: relative;
+	transition: all 0.3s;
+}
+
+.machine-hardcore-panel:hover {
+	border-color: #22c55e;
+	box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+	transform: translateY(-4px);
+}
+
+.panel-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.machine-id {
+	font-family: "Courier New";
+	color: #22c55e;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.status-led {
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	box-shadow: 0 0 20px currentColor;
+}
+
+.status-led.Running {
+	background: #22c55e;
+	animation: pulse 2s infinite;
+}
+.status-led.Stopped {
+	background: #b4770d;
+	animation: pulse 1s infinite;
+}
+.status-led.Blocked {
+	background: #c50b0b;
+	animation: pulse 0.5s infinite;
+}
+
+.machine-hardcore-name {
+	color: #f0f6fc;
+	font-size: 1.8rem;
+	font-weight: 900;
+	margin: 8px 0 16px;
+	letter-spacing: 2px;
+}
+
+.hardcore-stats {
+	margin-bottom: 16px;
+}
+.stat-row {
+	display: flex;
+	justify-content: space-between;
+	margin: 8px 0;
+	color: #8b949e;
+	font-size: 0.95rem;
+}
+.stat-row .value {
+	color: #22c55e;
+	font-weight: bold;
+	font-size: 1.4rem;
+}
+.stat-row .date {
+	color: #8b949e;
+}
+
+.efficiency-bar {
+	height: 20px;
+	background: #161b22;
+	border: 1px solid #30363d;
+	overflow: hidden;
+	position: relative;
+	margin: 16px 0;
+}
+
+.efficiency-bar .fill {
+	height: 100%;
+	background: linear-gradient(90deg, #22c55e, #16a34a);
+	transition: width 1s ease;
+}
+
+.efficiency-bar .glare {
+	position: absolute;
+	top: 0;
+	left: -50%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.3),
+		transparent
+	);
+	animation: glare 3s infinite;
+}
+
+.status-text {
+	text-align: center;
+	font-weight: bold;
+	letter-spacing: 3px;
+	padding: 8px;
+	font-size: 0.9rem;
+}
+
+.status-text.Running {
+	color: #22c55e;
+	background: rgba(34, 197, 94, 0.2);
+}
+.status-text.Stopped {
+	color: #f59e0b;
+	background: rgba(251, 146, 60, 0.2);
+}
+.status-text.Blocked {
+	color: #ef4444;
+	background: rgba(239, 68, 68, 0.2);
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.7;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+@keyframes glare {
+	0% {
+		left: -50%;
+	}
+	100% {
+		left: 100%;
+	}
+}
+@keyframes flicker {
+	0%,
+	100% {
+		opacity: 0.6;
+	}
+	50% {
+		opacity: 0.4;
+	}
+}
+/**************************************/
+/*Responsive*/
+@media (max-width: 767px) {
+	.machines-hardcore-title {
+		font-size: 1.5rem;
+		letter-spacing: 4px;
+	}
+	.machines-hardcore-grid {
+		grid-template-columns: 1fr; /* Single column on mobile */
+		gap: 16px;
+		padding: 16px;
+	}
+	.machine-hardcore-panel {
+		padding: 12px;
+	}
+	.machine-hardcore-name {
+		font-size: 1.4rem;
+	}
+	.stat-row {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 4px;
+	}
+	.hardcore-header {
+		padding: 16px !important;
+	}
+	.machines-hardcore-bg {
+		background-attachment: scroll; /* Disable fixed background on mobile */
+	}
+}
+
+@media (max-width: 767px) {
+	.machines-hardcore-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.machines-hardcore-bg::before {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+	.machine-id {
+		font-size: 1rem;
+	}
+	.stat-row .value {
+		font-size: 1.2rem;
+	}
+}
+/***********************/
+@media (max-width: 410px) {
+	.machine-hardcore-panel {
+		padding: 10px;
+	}
+	.machine-hardcore-name {
+		font-size: 1.2rem;
+		letter-spacing: 1px;
+	}
+	.machine-id {
+		font-size: 0.9rem;
+	}
+	.stat-row {
+		flex-direction: column;
+		align-items: flex-start;
+		margin: 6px 0;
+	}
+	.stat-row .value {
+		font-size: 1.1rem;
+	}
+	.efficiency-bar {
+		height: 16px;
+	}
+	.status-text {
+		font-size: 0.8rem;
+		padding: 4px;
+	}
+	.panel-top {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+	}
+}
+
+.machine-hardcore-name,
+.machine-id,
+.status-text {
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
+@media (max-width: 410px) {
+	.machines-hardcore-grid {
+		grid-template-columns: 1fr;
+		gap: 12px;
+		padding: 10px;
+	}
+}
+
+@media (max-width: 410px) {
+	.machines-hardcore-grid {
+		grid-template-columns: 1fr;
+		gap: 12px;
+		padding: 10px;
+	}
+}
