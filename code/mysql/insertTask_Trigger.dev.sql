@@ -1,4 +1,4 @@
-
+-- This trigger was dropped to allow directors to create tasks
 
 CREATE TRIGGER check_task_roles
 BEFORE INSERT ON task 
