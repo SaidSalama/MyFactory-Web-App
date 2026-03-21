@@ -1,10 +1,15 @@
 import type { Request, Response } from "express";
 import MachineRepo from "../repositories/machine_repo";
+<<<<<<< HEAD
 import validationService from "../services/validation_service";
 import { machineSchema } from "../ValidationSchemas/schemas";
 import { BaseController } from "./BaseController";
 
 class MachineController extends BaseController {
+=======
+
+class MachineController {
+>>>>>>> 6d15baa (adding all previous work)
 	public index = async (req: Request, res: Response) => {
 		//get the result oh the query
 		const reslults = await new MachineRepo().selectAll();
@@ -45,6 +50,7 @@ class MachineController extends BaseController {
 	};
 
 	public createMachine = async (req: Request, res: Response) => {
+<<<<<<< HEAD
 		//validation as first step
 		const validation = validationService.validate(machineSchema, req.body);
 
@@ -56,6 +62,8 @@ class MachineController extends BaseController {
 			});
 		}
 
+=======
+>>>>>>> 6d15baa (adding all previous work)
 		//get the result oh the query
 		const reslults = await new MachineRepo().createMachine(req.body);
 
@@ -68,8 +76,13 @@ class MachineController extends BaseController {
 			});
 			return;
 		}
+<<<<<<< HEAD
 		this.broadcastUpdate("machine", "CREATE", reslults);
 		//send a response with request status and json
+=======
+		//send a response with request status and json
+
+>>>>>>> 6d15baa (adding all previous work)
 		res
 			.status(200)
 			.json({ status: 200, message: "Machine created", data: reslults });
@@ -88,8 +101,11 @@ class MachineController extends BaseController {
 			});
 			return;
 		}
+<<<<<<< HEAD
 
 		this.broadcastUpdate("machine", "UPDATE", reslults);
+=======
+>>>>>>> 6d15baa (adding all previous work)
 		//send a response with request status and json
 
 		res.status(200).json({ status: 200, message: "Machines", data: reslults });
@@ -151,8 +167,13 @@ class MachineController extends BaseController {
 			});
 			return;
 		}
+<<<<<<< HEAD
 		this.broadcastUpdate("machine", "DELETE", reslults);
 		//send a response with request status and json
+=======
+		//send a response with request status and json
+
+>>>>>>> 6d15baa (adding all previous work)
 		res
 			.status(200)
 			.json({ status: 200, message: "Machine deleted", data: reslults });

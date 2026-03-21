@@ -1,9 +1,14 @@
 import type { Request, Response } from "express";
 import UsersRepo from "../repositories/users_repo";
+<<<<<<< HEAD
 import { BaseController } from "./BaseController";
 import { Users } from "lucide-react";
 
 class UsersController extends BaseController{
+=======
+
+class UsersController {
+>>>>>>> 6d15baa (adding all previous work)
     public index = async (req: Request, res: Response) => {
         //get the result oh the query
         const reslults = await new UsersRepo().selectAll();
@@ -45,6 +50,10 @@ class UsersController extends BaseController{
         console.log(req.params);
         //get the result oh the query
         const reslults = await new UsersRepo().inserUser(req.body);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d15baa (adding all previous work)
         //check if there is an error in query
         if (reslults instanceof Error) {
             res.status(400).json({
@@ -54,8 +63,13 @@ class UsersController extends BaseController{
             });
             return;
         }
+<<<<<<< HEAD
         this.broadcastUpdate("Users", "CREATE", reslults);
         //send a response with request status and json
+=======
+        //send a response with request status and json
+
+>>>>>>> 6d15baa (adding all previous work)
         res.status(200).json({ status: 201, message: "user inserted", data: reslults });
     };
 
@@ -73,7 +87,10 @@ class UsersController extends BaseController{
             });
             return;
         }
+<<<<<<< HEAD
         this.broadcastUpdate("Users", "DELETE", reslults);
+=======
+>>>>>>> 6d15baa (adding all previous work)
         //send a response with request status and json
 
         res.status(200).json({ status: 201, message: "user deleted", data: reslults });

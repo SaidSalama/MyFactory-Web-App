@@ -1,9 +1,14 @@
 import type { Request, Response } from "express";
 import DemandRepo from "../repositories/demandRepo";
+<<<<<<< HEAD
 import { BaseController } from "./BaseController";
 import { n8nService } from "../services/n8n_service";
 
 class DemandController extends BaseController{
+=======
+
+class DemandController {
+>>>>>>> 6d15baa (adding all previous work)
 	public index = async (req: Request, res: Response) => {
 		//get the result oh the query
 		const reslults = await new DemandRepo().selectAll();
@@ -54,8 +59,11 @@ class DemandController extends BaseController{
 			});
 			return;
 		}
+<<<<<<< HEAD
 		await n8nService.sendToN8n('demand_completed', reslults);
 		this.broadcastUpdate('demand', 'UPDATE', reslults);
+=======
+>>>>>>> 6d15baa (adding all previous work)
 		res
 			.status(201)
 			.json({ status: 200, message: "demand updated", data: reslults });
@@ -72,8 +80,11 @@ class DemandController extends BaseController{
 			});
 			return;
 		}
+<<<<<<< HEAD
 		await n8nService.sendToN8n('demand_created', reslults);
 		this.broadcastUpdate('demand', 'CREATE', reslults);
+=======
+>>>>>>> 6d15baa (adding all previous work)
 		res
 			.status(200)
 			.json({ status: 200, message: "demand inserted", data: reslults });
@@ -90,8 +101,11 @@ class DemandController extends BaseController{
 			});
 			return;
 		}
+<<<<<<< HEAD
 		await n8nService.sendToN8n('demand_deleted', reslults);
 		this.broadcastUpdate('demand', 'DELETE', reslults);
+=======
+>>>>>>> 6d15baa (adding all previous work)
 		res
 			.status(200)
 			.json({ status: 200, message: "demand deleted", data: reslults });

@@ -14,6 +14,7 @@ import Select, { SelectItem } from "../Select/Select";
 import "./TaskTab_eng.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+<<<<<<< HEAD
 import type { Machine } from "../../../models/machine";
 import { MachinesContext, TaskContext, UsersContext } from "../../DataProvider";
 import type { ApiResponse } from "../../models/api_response";
@@ -30,26 +31,50 @@ const TaskTab = ({ filterData }) => {
 	const user = localStorage.getItem("loggedInUser");
 	const LoginUser = JSON.parse(user as string);
 
+=======
+import { MachinesContext, TaskContext, UsersContext } from "../../DataProvider";
+import type { ApiResponse } from "../../models/api_response";
+import TaskAPI_Service from "../../Services/task_api_service";
+
+const TaskTab = ({ filterData }) => {
+>>>>>>> 6d15baa (adding all previous work)
 	const [SelectedTask, setSelectedTask] = useState<Partial<Task>>({});
 	const [FormError, setFormError] = useState<string | null>(null);
 	const [del, setDel] = useState(false);
 	const [NewTask, setNewTask] = useState<Partial<Task>>({
 		//default value
+<<<<<<< HEAD
 		created_by: LoginUser?.user_id,
 		description: "",
 		priority_id: 0,
 		deadline: "",
 		status_id: 1,
 		assigned_to: 0,
+=======
+		created_by: 1,
+		description: "",
+		priority_id: 1,
+		deadline: "",
+		status_id: 1,
+		assigned_to: 2,
+>>>>>>> 6d15baa (adding all previous work)
 		title: "",
 		machine_ids: "",
 	});
 
+<<<<<<< HEAD
+=======
+	const Tasks = useContext(TaskContext);
+	const Users = useContext(UsersContext);
+	const Machines = useContext(MachinesContext);
+
+>>>>>>> 6d15baa (adding all previous work)
 	const [isopen, setIsopen] = useState(false);
 	const [ViewDescription, setViewDescription] = useState(false);
 	const [ViewComments, setViewComments] = useState(false);
 	const [CreateTask, setCreateTask] = useState(false);
 
+<<<<<<< HEAD
 	// empty task used to reset the new task state after creating it to avoid this error
 	// :A component is changing an uncontrolled input to be controlled
 	//because we can't control an undefined field in forms so we need an initial value
@@ -64,12 +89,20 @@ const TaskTab = ({ filterData }) => {
 		machine_ids: "",
 	};
 	if (!Tasks?.data) return <p>Loading</p>;
+=======
+	if (!Tasks?.data) return <p>Loading</p>;
+	//console.log(Tasks?.data);
+>>>>>>> 6d15baa (adding all previous work)
 
 	const HandleClose = () => {
 		setIsopen(false);
 		setViewDescription(false);
 		setCreateTask(false);
+<<<<<<< HEAD
 		setNewTask(emptyTask);
+=======
+		setNewTask({});
+>>>>>>> 6d15baa (adding all previous work)
 		setFormError(null);
 		setSelectedTask({});
 		setDel(false);
@@ -83,6 +116,7 @@ const TaskTab = ({ filterData }) => {
 		try {
 			const response = await new TaskAPI_Service().create(NewTask);
 			console.log(`created task is ${response.data}`);
+<<<<<<< HEAD
 			if (response.status === 401 || response.status === 403) {
 				setFormError(response.message);
 				return false;
@@ -106,6 +140,10 @@ const TaskTab = ({ filterData }) => {
 			console.log(`error of update machine is ${err}`);
 			setFormError("failed to update machine status");
 			return false;
+=======
+		} catch (err) {
+			console.log(`error of create is ${err}`);
+>>>>>>> 6d15baa (adding all previous work)
 		}
 	};
 	const deleteTask = async () => {
@@ -127,7 +165,11 @@ const TaskTab = ({ filterData }) => {
 			return false;
 		}
 		if (NewTask.machine_ids === "") {
+<<<<<<< HEAD
 			setFormError("Tasks must be on  at least one machine");
+=======
+			setFormError("Tasks must be on  a machine");
+>>>>>>> 6d15baa (adding all previous work)
 			return false;
 		}
 		if (NewTask.deadline === "") {
@@ -139,6 +181,7 @@ const TaskTab = ({ filterData }) => {
 		return true;
 	};
 
+<<<<<<< HEAD
 	const HandleCreateTask = async () => {
 		if (!validateTask()) return;
 		if (!(await createTask())) return;
@@ -165,6 +208,16 @@ const TaskTab = ({ filterData }) => {
 		}
 
 		await deleteTask();
+=======
+	const HandleCreateTask = () => {
+		if (!validateTask()) return;
+		createTask();
+		HandleClose();
+	};
+
+	const HandleDeleteTask = () => {
+		deleteTask();
+>>>>>>> 6d15baa (adding all previous work)
 		HandleClose();
 	};
 	const toMySQLDateTime = (date: Date | null): string => {
@@ -175,13 +228,20 @@ const TaskTab = ({ filterData }) => {
 			date.getSeconds(),
 		)}`;
 	};
+<<<<<<< HEAD
 	//console.log(`from task tab connected user is ${LoginUser?.username}`);
+=======
+>>>>>>> 6d15baa (adding all previous work)
 	return (
 		<>
 			<Card>
 				<CardHeader className="task-card-header">
 					<div>
+<<<<<<< HEAD
 						<CardTitle className="Card_Title">Tasks</CardTitle>
+=======
+						<CardTitle>Tasks</CardTitle>
+>>>>>>> 6d15baa (adding all previous work)
 						<CardDescription className="task-header-description">
 							Manage technician tasks
 						</CardDescription>
@@ -214,10 +274,13 @@ const TaskTab = ({ filterData }) => {
 										<p className="task-meta">
 											Created by: {task.creator.username}
 										</p>
+<<<<<<< HEAD
 										<p>Machines:</p>
 										{task.machines.map((m) => (
 											<p key={m.machine_id}>{m.name}</p>
 										))}
+=======
+>>>>>>> 6d15baa (adding all previous work)
 									</div>
 									<div className="task-badges">
 										<Badge
@@ -252,6 +315,7 @@ const TaskTab = ({ filterData }) => {
 									>
 										View Description
 									</button>
+<<<<<<< HEAD
 									{/*only show the approve completion button when task finished and only to the creator of the task */}
 									{task.status.value === "Done" &&
 										task.creator.user_id === LoginUser?.user_id && (
@@ -267,13 +331,33 @@ const TaskTab = ({ filterData }) => {
 												Approve Completion
 											</button>
 										)}
+=======
+									{task.status.value === "Done" && (
+										<button
+											type="button"
+											className="btn-outline-sm"
+											onClick={() => {
+												setSelectedTask(task);
+												Handleopen();
+												setDel(true);
+											}}
+										>
+											Approve Completion
+										</button>
+									)}
+>>>>>>> 6d15baa (adding all previous work)
 									<button
 										type="button"
 										className="btn-outline-sm"
 										onClick={() => {
 											setSelectedTask(task);
+<<<<<<< HEAD
 											setViewComments(true);
 											Handleopen();
+=======
+											Handleopen();
+											setViewComments(true);
+>>>>>>> 6d15baa (adding all previous work)
 										}}
 									>
 										View Task Comments
@@ -324,6 +408,7 @@ const TaskTab = ({ filterData }) => {
 								<label className="form-label">
 									Machine on which task is to be executed
 								</label>
+<<<<<<< HEAD
 								<MultiSelect
 									placeholder="Select Machines"
 									value={NewTask.machine_ids}
@@ -332,6 +417,24 @@ const TaskTab = ({ filterData }) => {
 										setNewTask({ ...NewTask, machine_ids: v });
 									}}
 								></MultiSelect>
+=======
+								<Select
+									value={NewTask.machine_ids}
+									onValueChange={(v: string) =>
+										setNewTask({ ...NewTask, machine_ids: v })
+									}
+									placeholder="Select Machines"
+								>
+									{Machines?.data?.map((m) => (
+										<SelectItem
+											key={m.machine_id}
+											value={m.machine_id.toString()} //because the machine_id is a number and we need it as a string
+										>
+											{m.name}
+										</SelectItem>
+									))}
+								</Select>
+>>>>>>> 6d15baa (adding all previous work)
 							</div>
 							{/* Assign to Technician */}
 							<div className="form-group">

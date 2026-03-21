@@ -2,6 +2,7 @@ import Server from "./Core/server";
 
 //create a server
 const server = new Server();
+<<<<<<< HEAD
 const httpServer = server.startServer(); // This now returns HTTP server
 
 //start the server
@@ -13,3 +14,10 @@ httpServer.listen(process.env.PORT, () => {
     console.log(`WebSocket server available on ws://localhost:${process.env.PORT}`);});
 
 //app.listen(process.env.PORT); //TO GET THE VALRIABLES in .env.development
+=======
+
+//start the server
+const app = server.startServer();
+
+app.listen(process.env.PORT); //TO GET THE VALRIABLES in .env.development
+>>>>>>> 6d15baa (adding all previous work)

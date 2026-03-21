@@ -11,7 +11,10 @@ class CommentRouter {
 		this.router.get("/Comment/:comment_id", new CommentController().selectOne);
 		this.router.get("/TaskComment", new CommentController().GetTaskComment);
 		this.router.post("/TaskComment", new CommentController().CreateTaskComment);
+<<<<<<< HEAD
 		this.router.delete("/TaskComment", new CommentController().DeleteTaskComment);
+=======
+>>>>>>> 6d15baa (adding all previous work)
 
 		return this.router;
 	};

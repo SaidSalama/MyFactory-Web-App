@@ -23,7 +23,11 @@
 
 .select-content {
   position: absolute;
+<<<<<<< HEAD
   top: 100%;
+=======
+  top: 0%;
+>>>>>>> 6d15baa (adding all previous work)
   left: 0;
   right: 0;
   background: white;

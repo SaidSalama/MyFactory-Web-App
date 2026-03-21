@@ -1,11 +1,18 @@
 import type { Comment } from "../../models/comment";
 import type { Task } from "../../models/task";
 import MySQLService from "../services/mysql_service";
+<<<<<<< HEAD
 import TaskRepo from "./task_repo";
 
 class CommentRepo {
 	private table = "comment";
 	public selectAll = async (): Promise<Comment | unknown> => {
+=======
+
+class CommentRepo {
+	private table = "comment";
+	public selectAll = async (): Promise<Location[] | unknown> => {
+>>>>>>> 6d15baa (adding all previous work)
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
 		const sql = `
@@ -81,7 +88,11 @@ class CommentRepo {
 	};
 
 	public CreateTaskComment = async (
+<<<<<<< HEAD
 		data: Partial<Comment>,
+=======
+		data: Partial<Task>,
+>>>>>>> 6d15baa (adding all previous work)
 	): Promise<Comment | unknown> => {
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
@@ -102,6 +113,7 @@ class CommentRepo {
 			//data parameter is used to store any variables of the query
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, data);
+<<<<<<< HEAD
 			//console.log(query);
 			//get the task to which to commen was added and return it so the controller can send it to the clients
 			const result = await new TaskRepo().selectOne({ task_id: data.task_id });
@@ -128,6 +140,8 @@ class CommentRepo {
 			//data parameter is used to store any variables of the query
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, data);
+=======
+>>>>>>> 6d15baa (adding all previous work)
 			console.log(query);
 			//get the first element
 			const result = query as Comment[];

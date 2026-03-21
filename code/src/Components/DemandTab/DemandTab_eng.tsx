@@ -44,7 +44,11 @@ const DemandTab_eng = ({ filterData }) => {
 		<Card>
 			<CardHeader>
 				<div>
+<<<<<<< HEAD
 					<CardTitle className="Card_Title">Demands from Directors</CardTitle>
+=======
+					<CardTitle>Demands from Directors</CardTitle>
+>>>>>>> 6d15baa (adding all previous work)
 					<CardDescription>
 						Review and respond to improvement requests
 					</CardDescription>
@@ -53,6 +57,7 @@ const DemandTab_eng = ({ filterData }) => {
 
 			<CardContent>
 				<div className="demands-list">
+<<<<<<< HEAD
 					{filterData(Demands?.data, ["title"]).map((demand: Demand) => (
 						<div key={demand.demand_id} className="demand-item">
 							<div className="demand-header">
@@ -104,6 +109,65 @@ const DemandTab_eng = ({ filterData }) => {
 							</div>
 						</div>
 					))}
+=======
+					{
+						/*filterData(demands, ["title", "created_by"])*/ Demands?.data?.map(
+							(demand) => (
+								<div key={demand.demand_id} className="demand-item">
+									<div className="demand-header">
+										<div className="demand-info">
+											<p className="demand-message">{demand.title}</p>
+											<p className="demand-meta">
+												From: <strong>{demand.creator.username}</strong> •{" "}
+												{demand.deadline?.toString()}
+											</p>
+										</div>
+
+										<Badge
+											variant={
+												demand.status.value === "high"
+													? "destructive"
+													: "default"
+											}
+										>
+											{demand.status.value === "Completed"
+												? "Completed"
+												: "Pending"}
+										</Badge>
+									</div>
+
+									<div className="demand-actions">
+										<button
+											type="button"
+											className="btn-outline-sm"
+											onClick={() => {
+												setViewDescription(true);
+												setSelectedDemand(demand);
+												Handleopen();
+											}}
+										>
+											View Description
+										</button>
+										{demand.status.value !== "Completed" && (
+											<button
+												type="button"
+												className="btn-primary-sm"
+												onClick={() => {
+													setMarkcompleted(true);
+													setSelectedDemand(demand);
+													Handleopen();
+												}}
+											>
+												Mark as Completed
+											</button>
+											//button only for non completed demands
+										)}
+									</div>
+								</div>
+							),
+						)
+					}
+>>>>>>> 6d15baa (adding all previous work)
 				</div>
 			</CardContent>
 			<Modal isOpen={isopen} onClose={HandleClose}>

@@ -9,7 +9,33 @@ import { Card, CardContent, CardHeader } from "../Card/Card";
 
 const MachineTab = ({ filterData }) => {
 	const Machines = useContext(MachinesContext);
+<<<<<<< HEAD
 	
+=======
+	/*const [machiness, setMachiness] = useState<ApiResponse<Machine[]> | null>(
+		null,
+	);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<unknown>(null);
+	useEffect(() => {
+		const fetchMachines = async () => {
+			try {
+				const response = await new MachineAPI_Service().selectAll();
+				//console.log(`response is ${response}`);
+				setMachiness(response);
+			} catch (err) {
+				setError(err);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchMachines();
+	}, []);
+	if (loading) return <p>Loading</p>;
+	if (error) return <p>Error</p>;
+	console.log(machiness?.data?.[0]);*/
+>>>>>>> 6d15baa (adding all previous work)
 	return (
 		<div className="machines-hardcore-bg">
 			<div className="machines-hardcore-content">

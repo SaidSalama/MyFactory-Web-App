@@ -8,9 +8,12 @@
 	color: #1e293b;
 }
 
+<<<<<<< HEAD
 .Card_Title {
 	color: var(--main_color);
 }
+=======
+>>>>>>> 6d15baa (adding all previous work)
 /* Tasks Tab - Pure CSS */
 .task-send-button {
 	display: flex;

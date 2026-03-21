@@ -53,6 +53,7 @@ class DemandRepo {
 			const [query] = await connection.execute(sql, data);
 			console.log(query);
 			//get the first element
+<<<<<<< HEAD
 			const result = (query as Demand[]).shift() as Demand;
 			result.creator = (await new UsersRepo().selectOne({
 					user_id: result.created_by,
@@ -60,13 +61,20 @@ class DemandRepo {
 				result.status = (await new StatusRepo().selectOne({
 					status_id: result.status_id,
 				})) as Status;
+=======
+			const result = (query as Demand[]).shift();
+>>>>>>> 6d15baa (adding all previous work)
 
 			return result;
 		} catch (error) {
 			return error;
 		}
 	};
+<<<<<<< HEAD
 	// making the status_id of the demand =7 means it is completed
+=======
+
+>>>>>>> 6d15baa (adding all previous work)
 	public markDemand_completed = async (
 		data: Partial<Demand>,
 	): Promise<Demand | unknown> => {
@@ -80,8 +88,12 @@ class DemandRepo {
         `;
 		try {
 			const [query] = await connection.execute(sql, data);
+<<<<<<< HEAD
 			const updatedDemand = await new DemandRepo().selectOne({ demand_id: data.demand_id });
 			return updatedDemand;
+=======
+			return query;
+>>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}
@@ -100,7 +112,11 @@ class DemandRepo {
 		:title,
 		:description,
 		:deadline,
+<<<<<<< HEAD
 		:created_by,  
+=======
+		6,  
+>>>>>>> 6d15baa (adding all previous work)
 		1
 		)
          ;
@@ -109,9 +125,13 @@ class DemandRepo {
 		//in the query i made created_by=6 so it is the director  !! modify it after making connection
 		try {
 			const [query] = await connection.execute(sql, data);
+<<<<<<< HEAD
 			const demandID = (query as any).insertId; //to get the last inserted id
 			const newDemand=await new DemandRepo().selectOne({ demand_id: demandID });
 			return newDemand;
+=======
+			return query;
+>>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}
@@ -127,9 +147,14 @@ class DemandRepo {
 
         `;
 		try {
+<<<<<<< HEAD
 			const deletedDemand = await new DemandRepo().selectOne({ demand_id: data.demand_id });
 			const [query] = await connection.execute(sql, data);
 			return deletedDemand;
+=======
+			const [query] = await connection.execute(sql, data);
+			return query;
+>>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}

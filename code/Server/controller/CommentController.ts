@@ -1,8 +1,13 @@
 import type { Request, Response } from "express";
 import CommentRepo from "../repositories/commentRepo";
+<<<<<<< HEAD
 import { BaseController } from "./BaseController";
 
 class CommentController extends BaseController{
+=======
+
+class CommentController {
+>>>>>>> 6d15baa (adding all previous work)
 	public index = async (req: Request, res: Response) => {
 		//get the result oh the query
 		const reslults = await new CommentRepo().selectAll();
@@ -77,9 +82,14 @@ class CommentController extends BaseController{
 			});
 			return;
 		}
+<<<<<<< HEAD
 		//send to the client that the task has been updated by adding a new comment on it 
 		this.broadcastUpdate('task', 'UPDATE', reslults);
 		//send a response with request status and json
+=======
+		//send a response with request status and json
+
+>>>>>>> 6d15baa (adding all previous work)
 		res
 			.status(200)
 			.json({
@@ -88,6 +98,7 @@ class CommentController extends BaseController{
 				data: reslults,
 			});
 	};
+<<<<<<< HEAD
 
 	public DeleteTaskComment = async (req: Request, res: Response) => {
 		console.log(req.body);
@@ -114,5 +125,7 @@ class CommentController extends BaseController{
 			});
 	};
 
+=======
+>>>>>>> 6d15baa (adding all previous work)
 }
 export default CommentController;

@@ -1,13 +1,19 @@
 import cors from "cors";
 import express from "express";
+<<<<<<< HEAD
 import http from "http";
 import AuthRouter from "../router/AuthRouter";
+=======
+>>>>>>> 6d15baa (adding all previous work)
 import CommentRouter from "../router/CommentRouter";
 import DemandRouter from "../router/DemandRouter";
 import LocationRouter from "../router/LocationRouter";
 import MachineRouter from "../router/MachineRouter";
+<<<<<<< HEAD
 import n8nRouter from "../router/n8nRouter";
 import PLCRouter from "../router/PLCRouter";
+=======
+>>>>>>> 6d15baa (adding all previous work)
 import PriorityRouter from "../router/PriorityRouter";
 import RoleRouter from "../router/RoleRouter";
 import Sensor_typeRouter from "../router/Sensor_typeRouter";
@@ -15,12 +21,16 @@ import SensorRouter from "../router/SensorRouter";
 import StatusRouter from "../router/StatusRouter";
 import TaskRouter from "../router/TaskRouter";
 import UsersRouter from "../router/UsersRouter";
+<<<<<<< HEAD
 import WebSocketService from "../services/WebSocketService ";
+=======
+>>>>>>> 6d15baa (adding all previous work)
 
 class Server {
 	//properties
 	private app = express();
 	private router = express.Router();
+<<<<<<< HEAD
 	private server: http.Server;
 	private webSocketService: WebSocketService;
 
@@ -33,6 +43,11 @@ class Server {
 		this.webSocketService = WebSocketService.getInstance();
 		this.webSocketService.initialize(this.server); // Pass the HTTP server so sharing server
 
+=======
+
+	//constructor
+	constructor() {
+>>>>>>> 6d15baa (adding all previous work)
 		//to allow react client to access the data of the server
 		this.app.use(cors({ origin: process.env.ALLOW_ORIGIN }));
 
@@ -59,6 +74,7 @@ class Server {
 		this.router.use("/api", new DemandRouter().getRoutes());
 		this.router.use("/api", new Sensor_typeRouter().getRoutes());
 		this.router.use("/api", new CommentRouter().getRoutes());
+<<<<<<< HEAD
 		this.router.use("/api", new PLCRouter().getRoutes());
 		this.router.use("/api", new AuthRouter().getRoutes());
 		this.router.use("/api", new n8nRouter().getRoutes());
@@ -67,6 +83,12 @@ class Server {
 	public startServer = () => {
 		//return this.app;
 		return this.server; // Return HTTP server instead of Express app
+=======
+	};
+	//start server
+	public startServer = () => {
+		return this.app;
+>>>>>>> 6d15baa (adding all previous work)
 	};
 }
 export default Server;

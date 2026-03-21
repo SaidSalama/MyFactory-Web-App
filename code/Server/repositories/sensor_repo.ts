@@ -14,9 +14,14 @@ class SensorRepo {
         `;
 		try {
 			const [results] = await connetion.execute(sql);
+<<<<<<< HEAD
 			//console.log(results);
 			for (let i = 0; i < (results as Sensor[]).length; i++) {
 				//element is a reference of the object result[i] so any change in element will affect results[i]
+=======
+			console.log(results);
+			for (let i = 0; i < (results as Sensor[]).length; i++) {
+>>>>>>> 6d15baa (adding all previous work)
 				const element = (results as Sensor[])[i];
 
 				element.machine = (await new MachineRepo().selectOne({
@@ -27,7 +32,11 @@ class SensorRepo {
 					sensortype_id: element.sensortype_id,
 				})) as Sensor_type;
 			}
+<<<<<<< HEAD
 			return results; //return the array of sensors
+=======
+			return results;
+>>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}
@@ -49,6 +58,7 @@ class SensorRepo {
 			//data parameter is used to store any variables of the query
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, data);
+<<<<<<< HEAD
 			//console.log(query);
 			//get the first element
 			const result = (query as Sensor[]).shift() as Sensor;
@@ -60,6 +70,16 @@ class SensorRepo {
 					sensortype_id: result.sensortype_id,
 				})) as Sensor_type;
 			return result; //return only one sensor
+=======
+			console.log(query);
+			//get the first element
+			const result = (query as Sensor[]).shift() as Sensor;
+			//to ge the value of the foreign key machine for all sensors
+			result.machine = (await new MachineRepo().selectOne({
+				machine_id: result.machine_id,
+			})) as Machine;
+			return result;
+>>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}
@@ -92,8 +112,12 @@ class SensorRepo {
 		}
 	};
 
+<<<<<<< HEAD
 	/*create function without websocket */
 	/*public create = async (data: Partial<Sensor>): Promise<Sensor | unknown> => {
+=======
+	public create = async (data: Partial<Sensor>): Promise<Sensor | unknown> => {
+>>>>>>> 6d15baa (adding all previous work)
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
 		//:machine_id means  qeury variable
@@ -124,6 +148,7 @@ class SensorRepo {
 			return error;
 		}
 	};
+<<<<<<< HEAD
 */
 	
 	/*create function with websocket */
@@ -157,6 +182,10 @@ class SensorRepo {
 	};
 	/*delete function without web socket */
 	/*public delete = async (data: Partial<Sensor>): Promise<Sensor | unknown> => {
+=======
+
+	public delete = async (data: Partial<Sensor>): Promise<Sensor | unknown> => {
+>>>>>>> 6d15baa (adding all previous work)
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
 		//:machine_id means  qeury variable
@@ -177,6 +206,7 @@ class SensorRepo {
 		} catch (error) {
 			return error;
 		}
+<<<<<<< HEAD
 	};*/
 
 	/*delete function with websocket */
@@ -208,5 +238,8 @@ class SensorRepo {
     }
 };
 
+=======
+	};
+>>>>>>> 6d15baa (adding all previous work)
 }
 export default SensorRepo;
