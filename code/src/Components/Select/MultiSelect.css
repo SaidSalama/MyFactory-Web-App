@@ -1,0 +1,33 @@
+/* Additions for multi-select (same style family) */
+.selected-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+}
+
+.chip-remove {
+  background: none;
+  border: none;
+  color: #0369a1;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Make dropdown wider if needed */
+.select-content {
+  max-height: 240px;
+  overflow-y: auto;
+}

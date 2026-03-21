@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Node dependencies
 node_modules/
 
@@ -17,7 +18,16 @@ __pycache__/
 
 # Dev container runtime data / Docker volumes
 db-data/
-code/
+
 
 # Logs
 *.log
+=======
+code/node_modules
+db-data
+mongodb-data
+code/dist
+code/Flashpost_query
+code/.env.development
+code/Merise
+>>>>>>> 6d15baa (adding all previous work)

@@ -1,0 +1,54 @@
+/* src/components/Tabs.css */
+
+:root{
+  --main_color: #0a3ba5;
+  --second_color:   #243455;
+}
+
+.custom-tabs {
+ /* margin-top: 24px;*/
+  font-family: Arial, sans-serif;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  background: #f3f4f6;
+  border-radius: 12px;
+  width: fit-content;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tab-trigger {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--second_color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-trigger:hover {
+  color: var(--second_color);
+}
+
+.tab-trigger.active {
+  background: white;
+  color: var(--main_color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-weight: 600;
+}
+
+.tabs-content {
+  min-height: 400px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #e5e7eb;
+}

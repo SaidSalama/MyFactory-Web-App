@@ -1,0 +1,106 @@
+/* src/components/DashboardHeader.css */
+/* .dashboard-header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+} */
+
+:root{
+  --main_color: #0a3ba5;
+  --second_color:   #243455;
+}
+
+.dashboard-header{
+  /*background: 
+   linear-gradient(rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.92)),
+    url('https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&auto=format&fit=crop&q=85')
+    center/cover no-repeat fixed;*/
+   background-color: white; 
+  background-attachment: fixed;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+.header-left h3{ color: var(--main_color);}
+.header-left h1 { margin: 0; font-size: 24px; color: white; }
+.header-left img {max-height: 100px};
+.header-subtitle { margin: 4px 0 0; color: white; font-size: 14px; }
+
+.header-right { display: flex; align-items: center; gap: 16px; }
+
+.search-box { position: relative; width: 260px; }
+.search-icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; color: #9ca3af;
+}
+.search-input {
+  width: 80%; padding: 10px 12px 10px 40px; border: 1px solid #d1d5db;
+  border-radius: 8px; font-size: 14px;
+}
+.search-input:focus {
+  outline: none; border-color:var(--main_color); box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+
+.logout-button {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px; background: white; color: var(--second_color);
+  border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;
+  cursor: pointer; transition: all 0.2s;
+}
+.logout-button:hover { background: #f9fafb; border-color: var(--main_color);color: var(--main_color); }
+.logout-icon { width: 16px; height: 16px; }
+
+
+
+.search-box {
+  position: relative;
+  width: 260px;
+  flex: 1;                     /* This makes it shrink nicely */
+  max-width: 300px;            /* Never too wide */
+  min-width: 120px;            /* Never too small */
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .header-right {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .search-box,
+  .logout-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+

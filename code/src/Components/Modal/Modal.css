@@ -1,0 +1,94 @@
+
+:root{
+  --main_color: #0a3ba5;
+  --second_color:   #243455;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  width: 90%;
+  /*max-width: 500px;
+  max-height: 90vh;*/
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  
+}
+
+.modal-close:hover {
+  background:var(--main_color);
+  color:white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+/* Modal.css – add these lines */
+.modal-content {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  width: 75%;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  /* ADD THIS LINE */
+ 
+}
+
+/* Also add this to make sure dropdown is above everything */
+.pure-select {
+  position: relative;
+  z-index: 100;                   /* ← higher than modal content */
+}
+
+.select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-top: 6px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  z-index: 9999;                  /* ← super high so it's always on top */
+}
+.X{
+  width: 25px;
+  height: 25px;
+}

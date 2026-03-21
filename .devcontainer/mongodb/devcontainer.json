@@ -1,0 +1,7 @@
+{
+  "name": "MyFactory MongoDB Dev Container",
+  "dockerComposeFile": ["../../docker-compose.yml"],
+  "service": "mongodb",
+  "workspaceFolder": "/MyFactory",
+  "forwardPorts": [27017]
+}

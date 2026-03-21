@@ -1,0 +1,156 @@
+/* LoginPage.css */
+:root {
+	--main_color: #0a3ba5;
+	--second_color: #243455;
+}
+
+.login-container {
+	background: linear-gradient(to bottom right, #eff6ff, #eef2ff);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	font-family: Arial, sans-serif;
+}
+.login-container img {
+	max-width: 135px;
+	max-height: 150px;
+}
+
+.login-card {
+	width: 100%;
+	max-width: 900px;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	flex: 1;
+}
+
+.login-card-header {
+	text-align: center;
+	padding: 20px;
+	background: #f8f9fa;
+}
+
+.login-card-title {
+	font-size: 28px;
+	margin: 0;
+	color: var(--second_color);
+}
+
+.login-card-description {
+	color: var(--second_color);
+	margin-top: 8px;
+}
+
+.login-card-content {
+	padding: 0px 30px 30px;
+}
+
+.role-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 20px;
+}
+
+.role-button {
+	padding: 30px 20px;
+	border: 2px solid #e2e8f0;
+	border-radius: 12px;
+	background: white;
+	cursor: pointer;
+	transition: all 0.3s;
+	text-align: center;
+}
+
+.role-button:hover {
+	border-color: var(--second_color);
+	background: #ebf4ff;
+}
+
+.role-icon {
+	width: 48px;
+	height: 48px;
+	color: var(--main_color);
+	margin-bottom: 16px;
+}
+
+.role-title {
+	font-size: 20px;
+	margin: 0 0 8px 0;
+	color: var(--second_color);
+}
+
+.role-desc {
+	font-size: 14px;
+	color: var(--second_color);
+	margin: 0;
+}
+
+.form-container {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.back-button {
+	background: none;
+	border: none;
+	color: var(--second_color);
+	font-size: 16px;
+	cursor: pointer;
+	margin-bottom: 16px;
+}
+
+.back-button:hover {
+	color: var(--main_color);
+}
+
+.form-title {
+	text-align: center;
+	margin: 0 0 24px 0;
+	font-size: 22px;
+	color: var(--second_color);
+}
+
+.login-form-group {
+	margin-bottom: 20px;
+}
+
+.form-label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: var(--second_color);
+}
+
+.form-input {
+	width: 95%;
+	padding: 12px;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	font-size: 16px;
+}
+
+.form-input:focus {
+	outline: none;
+	border-color: var(--main_color);
+	box-shadow: 0 0 0 3px var(--main_color);
+}
+
+.submit-button {
+	width: 100%;
+	padding: 14px;
+	background: var(--main_color);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.submit-button:hover {
+	background: var(--second_color);
+}

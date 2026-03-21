@@ -1,0 +1,7 @@
+{
+  "name": "MyFactory MySQL Dev Container",
+  "dockerComposeFile": ["../../docker-compose.yml"],
+  "service": "db",
+  "workspaceFolder": "/MyFactory",
+  "forwardPorts": [3306]
+}
