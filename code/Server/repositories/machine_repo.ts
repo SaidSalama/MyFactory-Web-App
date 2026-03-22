@@ -18,11 +18,7 @@ class MachineRepo {
 		//execute the query
 		try {
 			const [query] = await connection.execute(sql);
-<<<<<<< HEAD
 			//console.log(query);
-=======
-			console.log(query);
->>>>>>> 6d15baa (adding all previous work)
 			for (let i = 0; i < (query as Machine[]).length; i++) {
 				const result = (query as Machine[])[i] as Machine;
 				//to get the value of the foreign key status_id for all machines
@@ -55,11 +51,7 @@ class MachineRepo {
 			//data parameter is used to store any variables of the query
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, data);
-<<<<<<< HEAD
 			//console.log(query);
-=======
-			console.log(query);
->>>>>>> 6d15baa (adding all previous work)
 			//get the first element
 			const result = (query as Machine[]).shift() as Machine;
 			//to get the value of the foreign key status_id
@@ -101,7 +93,6 @@ class MachineRepo {
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, data);
 			console.log(query);
-<<<<<<< HEAD
 			const newMachineID = (query as any).insertId;
 			//get the new created machine to send it via the controller to the client
 			const newMachine = await new MachineRepo().selectOne({
@@ -109,15 +100,6 @@ class MachineRepo {
 			});
 
 			return newMachine;
-=======
-			//get the first element
-			//const result = (query as Machine[]).shift() as Machine;
-			//to get the value of the foreign key status_id
-
-			//result.status= (await new StatusRepo().selectOne({ status_id: result.status_id })) as Status;
-
-			return query;
->>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}
@@ -140,7 +122,6 @@ class MachineRepo {
 			//data parameter is used to store any variables of the query
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, data);
-<<<<<<< HEAD
 			//console.log(query);
 			//get the updated machine to be sent
 			const updatedmachine = await new MachineRepo().selectOne({
@@ -148,16 +129,6 @@ class MachineRepo {
 			});
 
 			return updatedmachine;
-=======
-			console.log(query);
-			//get the first element
-			//const result = (query as Machine[]).shift() as Machine;
-			//to get the value of the foreign key status_id
-
-			//result.status= (await new StatusRepo().selectOne({ status_id: result.status_id })) as Status;
-
-			return query;
->>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}
@@ -228,12 +199,9 @@ class MachineRepo {
 	): Promise<Machine | unknown> => {
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
-<<<<<<< HEAD
 		const deletedMachine = await new MachineRepo().selectOne({
 			machine_id: data.machine_id,
 		});
-=======
->>>>>>> 6d15baa (adding all previous work)
 		//:machine_id means  qeury variable
 		const sql = `
         DELETE FROM ${process.env.MYSQL_DATABASE}.${this.table}
@@ -245,19 +213,8 @@ class MachineRepo {
 			//data parameter is used to store any variables of the query
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, data);
-<<<<<<< HEAD
 			//console.log(query);
 			return deletedMachine;
-=======
-			console.log(query);
-			//get the first element
-			//const result = (query as Machine[]).shift() as Machine;
-			//to get the value of the foreign key status_id
-
-			//result.status= (await new StatusRepo().selectOne({ status_id: result.status_id })) as Status;
-
-			return query;
->>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}

@@ -1,12 +1,8 @@
 import type { Role } from "../../models/role";
 import type { Users } from "../../models/users";
 import MySQLService from "../services/mysql_service";
+import passwordService from "../services/Password_service";
 import RoleRepo from "./role_repo";
-<<<<<<< HEAD
-import passwordService from "../services/Password_service"
-=======
-
->>>>>>> 6d15baa (adding all previous work)
 
 class UsersRepo {
 	private table = "users";
@@ -21,7 +17,6 @@ class UsersRepo {
 		//execute the query
 		try {
 			const [query] = await connection.execute(sql);
-<<<<<<< HEAD
 			//console.log(query);
 			for (let i = 0; i < (query as Users[]).length; i++) {
 				const result = (query as Users[])[i] as Users;
@@ -31,28 +26,14 @@ class UsersRepo {
 				})) as Role;
 				//delete the password because it is very dangerous to return it to the client
 				//but here we don't need to delete it because it is not in the select query
-				//delete result.password; 
-=======
-			console.log(query);
-			for (let i = 0; i < (query as Users[]).length; i++) {
-				const result = (query as Users[])[i] as Users;
-				console.log(result);
-				result.role = (await new RoleRepo().selectOne({ role_id: result.role_id })) as Role;
-				
->>>>>>> 6d15baa (adding all previous work)
+				//delete result.password;
 			}
 			return query;
 		} catch (error) {
 			return error;
 		}
 	};
-<<<<<<< HEAD
 	public selectOne = async (data: Partial<Users>): Promise<Users | unknown> => {
-=======
-	public selectOne = async (
-		data: Partial<Users>,
-	): Promise<Users | unknown> => {
->>>>>>> 6d15baa (adding all previous work)
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
 		//:status_id means  qeury variable
@@ -69,32 +50,23 @@ class UsersRepo {
 			const [query] = await connection.execute(sql, data);
 			console.log(query);
 			//get the first element
-<<<<<<< HEAD
 			const result = (query as Users[]).shift() as Users;
 			result.role = (await new RoleRepo().selectOne({
-					role_id: result.role_id,
+				role_id: result.role_id,
 			})) as Role;
 			//delete the password because it is very dangerous to return it to the client
 			//but here we don't need to delete it because it is not in the select query
-			//delete result.password;	
-=======
-			const result = (query as Users[]).shift();
-
->>>>>>> 6d15baa (adding all previous work)
+			//delete result.password;
 			return result;
 		} catch (error) {
 			return error;
 		}
 	};
-<<<<<<< HEAD
 	public inserUser = async (data: Partial<Users>): Promise<Users | unknown> => {
 		//first we need to hash the password before storing in database
-		const hashedPassword = await passwordService.hashPassword(data.password as string);
-=======
-	public inserUser = async (
-		data: Partial<Users>,
-	): Promise<Users | unknown> => {
->>>>>>> 6d15baa (adding all previous work)
+		const hashedPassword = await passwordService.hashPassword(
+			data.password as string,
+		);
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
 		//:status_id means  qeury variable
@@ -112,12 +84,11 @@ class UsersRepo {
         `;
 		//execute the query
 		try {
-<<<<<<< HEAD
 			//we need to apply the hashed password to the data before sending to database
-			 const userData = {
-						...data,
-						password: hashedPassword
-						};
+			const userData = {
+				...data,
+				password: hashedPassword,
+			};
 			//data parameter is used to store any variables of the query
 			//using variables in queries ensure security search for 'prepared statement'
 			const [query] = await connection.execute(sql, userData); //userData is the data containing hashed password
@@ -126,17 +97,7 @@ class UsersRepo {
 			const NewuserId = (query as any).insertId;
 			const Newuser = await new UsersRepo().selectOne({ user_id: NewuserId });
 
-			return Newuser;//return the new created user to send to the client from the controller
-=======
-			//data parameter is used to store any variables of the query
-			//using variables in queries ensure security search for 'prepared statement'
-			const [query] = await connection.execute(sql, data);
-			console.log(query);
-			//get the first element
-			//const result = (query as Users[]).shift();
-
-			return query;
->>>>>>> 6d15baa (adding all previous work)
+			return Newuser; //return the new created user to send to the client from the controller
 		} catch (error) {
 			return error;
 		}
@@ -145,11 +106,10 @@ class UsersRepo {
 	public deleteUser = async (
 		data: Partial<Users>,
 	): Promise<Users | unknown> => {
-<<<<<<< HEAD
-		//get the deletd user before delete 
-		const deleteduser=await new UsersRepo().selectOne({user_id:data.user_id})as Users;
-=======
->>>>>>> 6d15baa (adding all previous work)
+		//get the deletd user before delete
+		const deleteduser = (await new UsersRepo().selectOne({
+			user_id: data.user_id,
+		})) as Users;
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
 		//:status_id means  qeury variable
@@ -168,17 +128,14 @@ class UsersRepo {
 			//get the first element
 			//const result = (query as Users[]).shift();
 
-<<<<<<< HEAD
 			return deleteduser;
-=======
-			return query;
->>>>>>> 6d15baa (adding all previous work)
 		} catch (error) {
 			return error;
 		}
 	};
-<<<<<<< HEAD
-	public FindByMail = async (data: Partial<Users>): Promise<Users | unknown> => {
+	public FindByMail = async (
+		data: Partial<Users>,
+	): Promise<Users | unknown> => {
 		//connection to mysql server
 		const connection = await new MySQLService().connect();
 		//:status_id means  qeury variable
@@ -199,13 +156,12 @@ class UsersRepo {
 			const result = (query as Users[]).shift() as Users;
 			//if the mail is not in database return null to avoid internal sdrver error and send another warning
 			if (!result) {
-						return null; // Or throw an error
-					}
+				return null; // Or throw an error
+			}
 			result.role = (await new RoleRepo().selectOne({
-					role_id: result.role_id,
+				role_id: result.role_id,
 			})) as Role;
-			
-			
+
 			return result;
 		} catch (error) {
 			return error;
@@ -214,11 +170,3 @@ class UsersRepo {
 }
 export default UsersRepo;
 /* */
-=======
-
-
-	
-}
-export default UsersRepo;
-/* */
->>>>>>> 6d15baa (adding all previous work)

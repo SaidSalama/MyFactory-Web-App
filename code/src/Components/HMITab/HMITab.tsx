@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useContext, useEffect, useState } from "react";
-=======
-import { useEffect, useState } from "react";
->>>>>>> 6d15baa (adding all previous work)
 import Badge from "..//Badge/Badge";
 import {
 	Card,
@@ -13,7 +9,6 @@ import {
 } from "../Card/Card";
 import "./HMITab.css"; // Your new CSS file
 import { Factory, RotateCcw } from "lucide-react";
-<<<<<<< HEAD
 import type { Coils } from "../../../models/coils";
 import type { Holding_Reg } from "../../../models/holding_register";
 import type { Machine } from "../../../models/machine";
@@ -29,48 +24,26 @@ const HMITab = ({ filterData }) => {
 	const [machineStates, setMachineStates] = useState(
 		Machines?.data?.map((machine) => ({
 			id: machine.machine_id,
-=======
-
-const HMITab = ({ machines }) => {
-	const [machineStates, setMachineStates] = useState(
-		machines.map((machine) => ({
-			id: machine.id,
->>>>>>> 6d15baa (adding all previous work)
 			isRunning: false,
 			uptime: 0, // seconds
 		})),
 	);
-<<<<<<< HEAD
 	const [Errormsg, setErrormsg] = useState("");
 	const [globalCounter, setGlobalCounter] = useState(0);
-=======
-
-	const [globalCounter, setGlobalCounter] = useState(0);
-	const [lastProductionTime, setLastProductionTime] = useState(0);
->>>>>>> 6d15baa (adding all previous work)
 
 	// Timer logic
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setMachineStates((prev) =>
-<<<<<<< HEAD
 				prev?.map((state) => {
-=======
-				prev.map((state) => {
->>>>>>> 6d15baa (adding all previous work)
 					if (state.isRunning) {
 						const newUptime = state.uptime + 1;
 
 						// Check if any machine has been running for 5 seconds
 						if (
-<<<<<<< HEAD
 							//state.id === 1 && //last machine that put the final product
 							newUptime % 5 === 0 &&
 							//every 5 seconds a the machine run a product is produced
-=======
-							state.id === "4" &&
-							newUptime % 5 === 0 &&
->>>>>>> 6d15baa (adding all previous work)
 							newUptime > state.uptime
 						) {
 							setGlobalCounter((c) => c + 1);
@@ -88,11 +61,7 @@ const HMITab = ({ machines }) => {
 
 	const toggleMachine = (id, action) => {
 		setMachineStates((prev) =>
-<<<<<<< HEAD
 			prev?.map((state) =>
-=======
-			prev.map((state) =>
->>>>>>> 6d15baa (adding all previous work)
 				state.id === id
 					? {
 							...state,
@@ -110,7 +79,6 @@ const HMITab = ({ machines }) => {
 		return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
 	};
 
-<<<<<<< HEAD
 	// a function that send a number to holding registers of the plc
 	/*const sendToPLC = async (data:Holding_Reg) => {
 		try {
@@ -148,8 +116,6 @@ const HMITab = ({ machines }) => {
 			return false;
 		}
 	};
-=======
->>>>>>> 6d15baa (adding all previous work)
 	return (
 		<div className="hmi-industrial-container">
 			<Card className="hmi-main-card">
@@ -170,7 +136,6 @@ const HMITab = ({ machines }) => {
 					<div className="global-counter-panel">
 						<h3 className="counter-title">Total Parts Produced</h3>
 						<div className="counter-value">{globalCounter}</div>
-<<<<<<< HEAD
 						<p style={{ color: "red" }}>{Errormsg}</p>
 					</div>
 
@@ -179,26 +144,12 @@ const HMITab = ({ machines }) => {
 							const state = machineStates?.find(
 								(s) => s.id === machine.machine_id,
 							) || {
-=======
-						<p className="counter-note">
-							+1 every 5s when any machine is running
-						</p>
-					</div>
-
-					<div className="hmi-grid">
-						{machines.map((machine) => {
-							const state = machineStates.find((s) => s.id === machine.id) || {
->>>>>>> 6d15baa (adding all previous work)
 								isRunning: false,
 								uptime: 0,
 							};
 
 							return (
-<<<<<<< HEAD
 								<div key={machine.machine_id} className="hmi-machine-panel">
-=======
-								<div key={machine.id} className="hmi-machine-panel">
->>>>>>> 6d15baa (adding all previous work)
 									<div className="machine-header">
 										<h3 className="machine-name">{machine.name}</h3>
 										<Badge
@@ -216,7 +167,6 @@ const HMITab = ({ machines }) => {
 									</div>
 
 									{/* Real industrial buttons — separate START / STOP */}
-<<<<<<< HEAD
 									{machine.status_id !== 6 ? (
 										<div className="machine-controls">
 											<button
@@ -282,36 +232,6 @@ const HMITab = ({ machines }) => {
 											This machine is blocked and can't be controlled
 										</p>
 									)}
-=======
-									<div className="machine-controls">
-										<button
-											type="button"
-											className="industrial-btn start-btn"
-											onClick={() => toggleMachine(machine.id, "start")}
-											disabled={state.isRunning}
-										>
-											START
-										</button>
-
-										<button
-											type="button"
-											className="industrial-btn stop-btn"
-											onClick={() => toggleMachine(machine.id, "stop")}
-											disabled={!state.isRunning}
-										>
-											STOP
-										</button>
-
-										<button
-											type="button"
-											className="industrial-btn reset-btn"
-											onClick={() => toggleMachine(machine.id, "reset")}
-										>
-											<RotateCcw className="reset-icon" />
-											RESET TIMER
-										</button>
-									</div>
->>>>>>> 6d15baa (adding all previous work)
 								</div>
 							);
 						})}

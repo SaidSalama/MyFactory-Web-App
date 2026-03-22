@@ -11,10 +11,7 @@ import MachineAPI_Service from "./Services/machine_api_service";
 import SensorAPI_Service from "./Services/sensor_api_service";
 import TaskAPI_Service from "./Services/task_api_service";
 import UsersAPI_Service from "./Services/users_api_service";
-<<<<<<< HEAD
 import { webSocketClient } from "./Services/WebSocketClient";
-=======
->>>>>>> 6d15baa (adding all previous work)
 
 export const MachinesContext = createContext<ApiResponse<Machine[]> | null>(
 	null,
@@ -23,10 +20,7 @@ export const UsersContext = createContext<ApiResponse<Usertype[]> | null>(null);
 export const SensorsContext = createContext<ApiResponse<Sensor[]> | null>(null);
 export const DemandContext = createContext<ApiResponse<Demand[]> | null>(null);
 export const TaskContext = createContext<ApiResponse<Task[]> | null>(null);
-<<<<<<< HEAD
 export const AI_responseContext = createContext<string | null>(null);
-=======
->>>>>>> 6d15baa (adding all previous work)
 
 const DataProvider = ({ children }: { children: ReactNode }) => {
 	//states to store data fetched
@@ -35,7 +29,6 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
 	const [sensors, setSensors] = useState<ApiResponse<Sensor[]> | null>(null);
 	const [demands, setDemands] = useState<ApiResponse<Demand[]> | null>(null);
 	const [tasks, setTasks] = useState<ApiResponse<Task[]> | null>(null);
-<<<<<<< HEAD
 	const [ai_response, setai_response] = useState<string | null>(null);
 
 	/* WebSocket for real-time sensor creation */
@@ -486,9 +479,6 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
 		webSocketClient.on("TABLE_DEMAND_UPDATE", handleDemandUpdate);
 		webSocketClient.on("n8nRead", handlen8nMessage);
 	}, []);
-=======
-
->>>>>>> 6d15baa (adding all previous work)
 	/*fetching machines from databases */
 	useEffect(() => {
 		const fetchMachines = async () => {
@@ -522,11 +512,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
 		const fetchSensors = async () => {
 			try {
 				const response = await new SensorAPI_Service().selectAll();
-<<<<<<< HEAD
 				//response.data?.map((s) => { console.log(s) });
-=======
-				//console.log(`response is ${response}`);
->>>>>>> 6d15baa (adding all previous work)
 				setSensors(response);
 			} catch (err) {
 				console.log(`error is ${err}`);
@@ -541,11 +527,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
 		const fetchDemands = async () => {
 			try {
 				const response = await new DemandAPI_Service().selectAll();
-<<<<<<< HEAD
 				//console.log(`demands are  ${response.data}`);
-=======
-				console.log(`demands are  ${response.data}`);
->>>>>>> 6d15baa (adding all previous work)
 				setDemands(response);
 			} catch (err) {
 				console.log(`error is ${err}`);
@@ -553,20 +535,12 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
 		};
 		fetchDemands();
 	}, []);
-<<<<<<< HEAD
 	/**fetching Tasks */
-=======
-
->>>>>>> 6d15baa (adding all previous work)
 	useEffect(() => {
 		const fetchTasks = async () => {
 			try {
 				const response = await new TaskAPI_Service().selectAll();
-<<<<<<< HEAD
 				//console.log(`response is ${response}`);
-=======
-				console.log(`response is ${response}`);
->>>>>>> 6d15baa (adding all previous work)
 				setTasks(response);
 			} catch (err) {
 				console.log(`error is ${err}`);
@@ -582,13 +556,9 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
 				<MachinesContext.Provider value={machines}>
 					<DemandContext.Provider value={demands}>
 						<TaskContext.Provider value={tasks}>
-<<<<<<< HEAD
 							<AI_responseContext.Provider value={ai_response}>
 								{children}
 							</AI_responseContext.Provider>
-=======
-							{children}
->>>>>>> 6d15baa (adding all previous work)
 						</TaskContext.Provider>
 					</DemandContext.Provider>
 				</MachinesContext.Provider>

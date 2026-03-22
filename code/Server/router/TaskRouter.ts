@@ -1,10 +1,7 @@
 import express from "express";
 import TaskController from "../controller/TaskController";
-<<<<<<< HEAD
 import { authMiddleware } from "../middlewares/auth_middleware";
 import { roleMiddleware } from "../middlewares/role_middlware";
-=======
->>>>>>> 6d15baa (adding all previous work)
 
 class TaskRouter {
 	private router = express.Router();
@@ -14,7 +11,6 @@ class TaskRouter {
 		this.router.get("/Task", new TaskController().index);
 		//create a get router with router variables
 		this.router.get("/Task/:task_id", new TaskController().selectOne);
-<<<<<<< HEAD
 		//protect the route of creating tasks so it can't craete task without token of user
 		this.router.post(
 			"/Task",
@@ -22,10 +18,6 @@ class TaskRouter {
 			roleMiddleware([1]), //only engineers can create tasks
 			new TaskController().insert,
 		);
-=======
-
-		this.router.post("/Task", new TaskController().insert);
->>>>>>> 6d15baa (adding all previous work)
 		this.router.put("/Task", new TaskController().updatestatus);
 		this.router.delete("/Task", new TaskController().delete);
 

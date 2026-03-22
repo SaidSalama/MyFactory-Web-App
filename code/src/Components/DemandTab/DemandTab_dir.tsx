@@ -14,19 +14,13 @@ import "./DemandTab_dir.css";
 
 import type { Demand } from "../../../models/demand";
 import { DemandContext } from "../../DataProvider";
-<<<<<<< HEAD
 import { LoginUserContext } from "../../root";
-=======
->>>>>>> 6d15baa (adding all previous work)
 import DemandAPI_Service from "../../Services/demand_api_service";
 import Modal from "../Modal/Modal";
 
 const DemandTab_dir = ({ filterData }) => {
-<<<<<<< HEAD
 	const user = localStorage.getItem("loggedInUser");
 	const LoginUser = JSON.parse(user as string);
-=======
->>>>>>> 6d15baa (adding all previous work)
 	const Demands = useContext(DemandContext);
 	const [isopen, setIsopen] = useState(false);
 	const [CreateDemand, setCreateDemand] = useState(false);
@@ -35,22 +29,12 @@ const DemandTab_dir = ({ filterData }) => {
 	const [formError, setFormError] = useState<string | null>(null); //state storing errors of the forms
 	const [SelectedDemand, setSelectedDemand] = useState<Partial<Demand>>({});
 	const [NewDemand, setNewDemand] = useState<
-<<<<<<< HEAD
 		Omit<Demand, "demand_id" | "status_id" | "creator" | "status">
-=======
-		Omit<
-			Demand,
-			"demand_id" | "created_by" | "status_id" | "creator" | "status"
-		>
->>>>>>> 6d15baa (adding all previous work)
 	>({
 		title: "",
 		description: "",
 		deadline: "",
-<<<<<<< HEAD
 		created_by: LoginUser?.user_id as number,
-=======
->>>>>>> 6d15baa (adding all previous work)
 	});
 
 	if (!Demands?.data) return <p>Loading</p>;
@@ -64,19 +48,11 @@ const DemandTab_dir = ({ filterData }) => {
 	const Handleopen = () => {
 		setIsopen(true);
 	};
-<<<<<<< HEAD
-=======
-	//const [Selected_demand, setSelected_demand] = useState("");
->>>>>>> 6d15baa (adding all previous work)
 
 	const HandleCreateDemand = () => {
 		if (!validateDemand()) return; //if there is an error don't send to backend
 		createDemand();
-<<<<<<< HEAD
 		//console.log(NewDemand);
-=======
-		console.log(NewDemand);
->>>>>>> 6d15baa (adding all previous work)
 		setCreateDemand(false);
 		setIsopen(false);
 	};
@@ -120,11 +96,7 @@ const DemandTab_dir = ({ filterData }) => {
 	// so we need to convete the javascript date object to string that can be accepted by mysql
 	const toMySQLDateTime = (date: Date | null): string => {
 		const pad = (n: number) => n.toString().padStart(2, "0");
-<<<<<<< HEAD
 		return `${date?.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
-=======
-		return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
->>>>>>> 6d15baa (adding all previous work)
 			date.getDate(),
 		)} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(
 			date.getSeconds(),
@@ -135,11 +107,7 @@ const DemandTab_dir = ({ filterData }) => {
 		<Card>
 			<CardHeader className="demandHeader">
 				<div>
-<<<<<<< HEAD
 					<CardTitle className="Card_Title">Demands from Directors</CardTitle>
-=======
-					<CardTitle>Demands from Business Owner</CardTitle>
->>>>>>> 6d15baa (adding all previous work)
 					<CardDescription>
 						You can create any demand to engineers
 					</CardDescription>
@@ -159,11 +127,7 @@ const DemandTab_dir = ({ filterData }) => {
 
 			<CardContent>
 				<div className="demands-list">
-<<<<<<< HEAD
 					{filterData(Demands?.data, ["title"]).map((demand: Demand) => (
-=======
-					{Demands?.data?.map((demand) => (
->>>>>>> 6d15baa (adding all previous work)
 						<div key={demand.demand_id} className="demand-item">
 							<div className="demand-header">
 								<div className="demand-info">
@@ -207,12 +171,8 @@ const DemandTab_dir = ({ filterData }) => {
 								>
 									View Description
 								</button>
-<<<<<<< HEAD
 								{demand.status.value === "Completed" &&
 								demand.creator.user_id === LoginUser?.user_id ? (
-=======
-								{demand.status.value === "Completed" ? (
->>>>>>> 6d15baa (adding all previous work)
 									<button
 										type="button"
 										className="btn-primary-sm"

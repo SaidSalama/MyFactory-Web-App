@@ -1,10 +1,6 @@
 import type { Location } from "../../models/location";
 import MySQLService from "../services/mysql_service";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d15baa (adding all previous work)
 class LocationRepo {
 	private table = "location";
 	public selectAll = async (): Promise<Location[] | unknown> => {
@@ -18,18 +14,10 @@ class LocationRepo {
 		//execute the query
 		try {
 			const [query] = await connection.execute(sql);
-<<<<<<< HEAD
 			//console.log(query);
 			for (let i = 0; i < (query as Location[]).length; i++) {
 				const result = (query as Location[])[i] as Location;
 				console.log(result);
-=======
-			console.log(query);
-			for (let i = 0; i < (query as Location[]).length; i++) {
-				const result = (query as Location[])[i] as Location;
-				console.log(result);
-				
->>>>>>> 6d15baa (adding all previous work)
 			}
 			return query;
 		} catch (error) {
@@ -64,8 +52,4 @@ class LocationRepo {
 	};
 }
 export default LocationRepo;
-<<<<<<< HEAD
 /* */
-=======
-/* */
->>>>>>> 6d15baa (adding all previous work)
