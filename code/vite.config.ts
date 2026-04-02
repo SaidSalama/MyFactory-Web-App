@@ -4,6 +4,13 @@ import rsc from "@vitejs/plugin-rsc";
 import { defineConfig, loadEnv } from "vite";
 
 export default defineConfig(({ mode }) => {
+	 // Detect if running on GitHub Actions
+  if (process.env.GITHUB_ACTIONS) {
+    // GitHub's MySQL runs on localhost
+    process.env.MYSQL_HOST = "127.0.0.1";
+    // GitHub's MySQL password is 'root' (no password by default)
+    process.env.MYSQL_PASSWORD = "root";
+  }
 	return {
 		server: {
 			port: 5173,
