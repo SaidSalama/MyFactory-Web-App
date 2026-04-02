@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "npx tsx watch --env-file .env.development Server/index.ts"
+    "server": "npx tsx watch --env-file .env.development Server/index.ts",
+    "test": "vitest"
   },
   "dependencies": {
     "@types/cors": "^2.8.19",
@@ -39,6 +40,7 @@
     "@vitejs/plugin-react": "latest",
     "@vitejs/plugin-rsc": "latest",
     "rsc-html-stream": "^0.0.7",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vitest": "^4.1.2"
   }
 }

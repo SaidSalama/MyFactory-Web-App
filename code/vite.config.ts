@@ -1,13 +1,18 @@
 import react from "@vitejs/plugin-react";
 import rsc from "@vitejs/plugin-rsc";
-import { defineConfig } from "vite";
+//import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
 	return {
-    server:{
-        port:5173,
-        host:true
-    },
+		server: {
+			port: 5173,
+			host: true,
+		},
+		test: {
+			env: loadEnv(mode, process.cwd(), ""),
+			exclude: ["node_modules", "mongodb"],
+		},
 		plugins: [
 			rsc({
 				// `entries` option is only a shorthand for specifying each `rollupOptions.input` below
