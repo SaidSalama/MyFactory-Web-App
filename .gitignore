@@ -1,39 +1,33 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Node dependencies
 node_modules/
+code/node_modules/
 
 # Build output
 dist/
 build/
+code/dist/
 
-# Environment variables / secrets
+# Environment variables / secrets (NOT tests)
 .env
+.env.development
+.env.test
+.env.production
 
-# Python virtual env
+# Python
 .venv/
 __pycache__/
 
-# VS Code editor config
+# VS Code
 .vscode/
 
-# Dev container runtime data / Docker volumes
+# Docker volumes
 db-data/
-
+mongodb-data/
+code/mysql/
 
 # Logs
 *.log
-=======
-=======
->>>>>>> 6d15baa (adding all previous work)
-code/node_modules
-db-data
-mongodb-data
-code/dist
-<<<<<<< HEAD
+
+# Other
 code/Flashpost_query
-code/.env.development
 code/Merise
->>>>>>> 6d15baa (adding all previous work)
-=======
->>>>>>> 6d15baa (adding all previous work)
