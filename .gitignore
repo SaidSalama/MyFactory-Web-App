@@ -23,7 +23,7 @@ __pycache__/
 # Docker volumes
 db-data/
 mongodb-data/
-code/mysql/
+
 
 # Logs
 *.log
