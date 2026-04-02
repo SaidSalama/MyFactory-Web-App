@@ -1,0 +1,54 @@
+# Name of the workflow (appears in GitHub Actions tab)
+name: Run Tests
+
+# Defines when this workflow should run
+on:
+  # Trigger 1: Automatically run when code is pushed to the main branch
+  push:
+    branches: [main]
+  
+  # Trigger 2: Allow manual execution from GitHub UI (button)
+  workflow_dispatch:
+
+# Defines the jobs to run
+jobs:
+  # Job name (can be anything)
+  test:
+    # Runner: Ubuntu Linux virtual machine provided by GitHub
+    runs-on: ubuntu-latest
+    
+    # List of tasks to execute in order
+    steps:
+      # Step 1: Download your code from GitHub to the runner
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # Step 2: Install Node.js on the runner
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Use Node.js version 20
+      
+      # Step 3: Install npm dependencies (same as npm install)
+      - name: Install dependencies
+        run: |
+          cd code              # Go into the code folder
+          npm ci               # Clean install (faster than npm install for CI)
+      
+      # Step 4: Start MySQL server (pre-installed on Ubuntu runner)
+      - name: Start MySQL
+        run: sudo service mysql start
+      
+      # Step 5: Create empty test database on GitHub's MySQL
+      - name: Create test database
+        run: mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS FactoryData_test;"
+      
+      # Step 6: Import table structure into the empty database
+      - name: Import database structure
+        run: mysql -uroot -proot FactoryData_test < code/structure.sql
+      
+      # Step 7: Execute the tests
+      - name: Run tests
+        run: |
+          cd code              # Go into the code folder
+          npm test             # Run Vitest
