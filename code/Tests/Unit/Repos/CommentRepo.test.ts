@@ -7,9 +7,12 @@ describe("CommentRepo", () => {
 	let commentRepo: CommentRepo;
 
 	beforeAll(async () => {
-		// Connect to test database
 		const mysqlService = new MySQLService();
 		connection = await mysqlService.connect();
+
+		// Add this line to select the database
+		await connection.query("USE FactoryData_test");
+
 		commentRepo = new CommentRepo();
 	});
 
