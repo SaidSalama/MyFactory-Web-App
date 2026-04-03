@@ -16,7 +16,8 @@ jobs:
   test:
     # Runner: Ubuntu Linux virtual machine provided by GitHub
     runs-on: ubuntu-latest
-    
+    env:
+      MYSQL_DATABASE: FactoryData_test
     # List of tasks to execute in order
     steps:
       # Step 1: Download your code from GitHub to the runner
